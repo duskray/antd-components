@@ -1,0 +1,6 @@
+{
+  "name": "MapSelecter",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./MapSelecter.js"
+}

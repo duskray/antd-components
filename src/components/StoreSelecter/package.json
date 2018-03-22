@@ -1,0 +1,6 @@
+{
+  "name": "StoreSelecter",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./StoreSelecter.js"
+}

@@ -1,0 +1,93 @@
+@import "../../themes/index.less";
+
+.roomList {
+  border: @gray  1px solid;
+}
+
+.fullScreenIcon {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  line-height: 24px;
+}
+
+.fullScreen {
+  transition: all .2s linear;
+  // animation:fullScreen .2s linear;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: @white;
+  z-index: 2000;
+}
+
+
+.body {
+  padding: 10px;
+}
+
+.fullScreen .body {
+  overflow: auto;
+  height: calc(~"100vh - 42px");
+}
+
+.roomStatus() {
+  border-radius: 5px;
+  color: @white;
+}
+
+.roomStatus0 {
+  background-color: @green;
+  .roomStatus;
+}
+.roomStatus1 {
+  background-color: @blue;
+  .roomStatus;
+}
+.roomStatus2 {
+  background-color: @purple;
+  .roomStatus;
+}
+.roomStatus3 {
+  background-color: @yellow;
+  .roomStatus;
+}
+.roomStatus4 {
+  background-color: @light-red;
+  .roomStatus;
+}
+
+
+.room() {
+  width: 90px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.room0{
+  background-color: @gray;
+  .room;
+}
+.room1{
+  background-color: @blue;
+  color: @white;
+  .room;
+}
+.room2{
+  background-color: @light-red;
+  color: @white;
+  .room;
+}
+.room3{
+  background-color: @yellow;
+  color: @white;
+  .room;
+}
+.room4{
+  background-color: @white;
+  .room;
+}

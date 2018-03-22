@@ -1,0 +1,37 @@
+@import "../../themes/index.less";
+.spin {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.card {
+  width: 280px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 8px 10px 8px 10px;
+  background-color: @gray;
+  color: @text-gray;
+  
+
+  p {
+    .text-overflow();
+    margin-bottom: 10px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    font-weight: bold;
+    width: 190px;
+  }
+
+}
+
+.menuDisable, .menuDel {
+  color: @red !important;
+}
+
+.menuEnable {
+  color: @green !important; 
+}
+

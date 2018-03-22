@@ -1,0 +1,43 @@
+@import "../../themes/index.less";
+
+.enabled {
+  color: @green !important;
+}
+
+.disabled {
+  color: @red !important;
+}
+
+.groupBtn {
+  vertical-align: top;
+  width: 30px;
+  padding: 0;
+  border-radius: 0;
+}
+
+.groupBtn:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.groupBtn:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.groupInput {
+  width: 50px;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+  margin: 0 -1px;
+  padding: 0;
+  border-radius: 0;
+}
+
+.groupBtn:hover, .groupBtn:focus {
+  z-index: 1;
+}
+.groupInput:hover, .groupInput:focus {
+  z-index: 2;
+}

@@ -1,0 +1,75 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackTemplate = require('html-webpack-template')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+
+module.exports = (webpackConfig, env) => {
+  // FilenameHash
+  webpackConfig.output.chunkFilename = '[name].[hash].js'
+
+  if (env === 'production' && webpackConfig.module) {
+    // ClassnameHash
+    webpackConfig.module.rules.map((item) => {
+      if (item.use && item.use[0] === 'style') {
+        return item.use.map((iitem) => {
+          if (iitem && iitem.loader === 'css') {
+            iitem.options.localIdentName = '[hash:base64:5]'
+          }
+          return iitem
+        })
+      }
+      return item
+    })
+  }
+
+  // PreLoaders
+  // webpackConfig.module.preLoaders = [{
+  //   test: /\.js$/,
+  //   enforce: 'pre',
+  //   loader: 'eslint',
+  // }]
+  // webpackConfig.entry = ['babel-polyfill', path.resolve(__dirname, "src/index.js")]
+  webpackConfig.entry = ['babel-polyfill', ...webpackConfig.entry.index]
+  webpackConfig.devtool = 'inline-source-map'
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new CopyWebpackPlugin([
+      {
+        from: 'src/public',
+        to: env === 'production' ? '../' : webpackConfig.output.outputPath,
+      },
+    ]),
+    new HtmlWebpackPlugin({
+      hash: true,
+      mobile: true,
+      title: '大谦足道',
+      inject: false,
+      appMountId: 'root',
+      template: `!!ejs-loader!${HtmlWebpackTemplate}`,
+      filename: env === 'production' ? '../index.html' : 'index.html',
+      minify: {
+        collapseWhitespace: true,
+      },
+      scripts: env === 'production' ? null : ['/roadhog.dll.js'],
+      meta: [
+        {
+          name: 'description',
+          content: '大谦足道管理端',
+        }, {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0',
+        },
+      ],
+    }),
+  ])
+
+  // Alias
+  webpackConfig.resolve.alias = {
+    components: `${__dirname}/src/components`,
+    utils: `${__dirname}/src/utils`,
+    config: `${__dirname}/src/utils/config`,
+    enums: `${__dirname}/src/utils/enums`,
+    public: `${__dirname}/src/public`,
+  }
+
+  return webpackConfig
+}

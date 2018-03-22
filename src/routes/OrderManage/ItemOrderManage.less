@@ -1,0 +1,44 @@
+@import "../../themes/index.less";
+
+.card {
+  width: 240px;
+  height: 120px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 8px 10px 8px 10px;
+  background-color: @gray;
+  color: @text-gray;
+  position: relative;
+
+  &.red {
+    background-color: @light-red;
+    color: @white;
+  }
+
+  &.yellow {
+    background-color: @yellow;
+    color: @white;
+  }
+
+  &.blue {
+    background-color: @blue;
+    color: @white;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .status {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  .btn {
+    position: absolute;
+    right: 16px;
+    bottom: 15px;
+  }
+}
